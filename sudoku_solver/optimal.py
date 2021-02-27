@@ -1,7 +1,7 @@
 from math import floor
 
 
-def sudoku_solve(board: list) -> bool:
+def sudoku_can_be_solved(board: list) -> bool:
     # For each empty cell, consider 'newCandidates', the
     # set of possible candidate values that can
     # be placed into that cell.
@@ -34,7 +34,7 @@ def sudoku_solve(board: list) -> bool:
     # we are done.
     for val in candidates:
         board[row][col] = val
-        if sudoku_solve(board):
+        if sudoku_can_be_solved(board):
             return True
         # The tried value val didn't work so restore
         # the (row, col) cell back to '.'
