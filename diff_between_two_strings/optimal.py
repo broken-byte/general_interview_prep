@@ -1,7 +1,11 @@
 
 
 def diff_between_two_strings(source, target):
-    memo = [[None for i in range(len(source) + 1)]] * (len(target) + 1)
+    '''
+    First Solution
+    ---------------------------------
+    n, m = len(source), len(target)
+    memo = [[0] * m] * n
 
     def dp(i, j):
         if i == len(source) or j == len(target):  # If we've iterated through all of one of the strings
@@ -34,7 +38,28 @@ def diff_between_two_strings(source, target):
         ans.append('+' + target[j])
         j += 1
     return ans
+    Second Solution
+    '''
+    n, m = len(source), len(target)
+    dp = memo = [[0] * (m + 1)] * (n + 1)
+    ans = []
+    for i in range(n):
+        dp[i][m] = 0
+    for j in range(m):
+        dp[n][j] = m - j
+    for i in range(n - 1, 0):
+        for j in range(m - 1, 0):
+            if source[i] == target[j]:
+                dp[i][j] = dp[i + 1][j + 1]
+            else:
+                dp[i][j] = 1 + min(
+                    dp[i + 1][j],  # Subtract from source (-)
+                    dp[i][j + 1]   # Add to source (+)
+                )
+    return dp[0][0]
 
 
 if __name__ == '__main__':
-    print(diff_between_two_strings("ABCDEFG", "ABDFFGH"))
+    test = diff_between_two_strings("ABCDEFG", "ABDFFGH")
+    print(test)
+    assert(test == ["A","B","-C","D","-E","F","+F","G","+H"])
