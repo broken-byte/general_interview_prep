@@ -1,3 +1,5 @@
+# Sudoku Solver
+
 Write the function sudokuSolve that checks whether a given sudoku board 
 (i.e. sudoku puzzle) is solvable. If so, the function will return true. 
 Otherwise, (i.e. there is no valid solution to the given sudoku board), 

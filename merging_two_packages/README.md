@@ -1,4 +1,4 @@
-#Merging 2 Packages
+# Merging 2 Packages
 Given a package with a weight limit limit and an array arr of item weights, 
 implement a function getIndicesOfItemWeights that finds two items whose sum
 of weights equals the weight limit limit. Your function should return a pair

@@ -12,13 +12,6 @@ def calculate_equation(equations: List[List[str]], values: List[float], queries:
 
 
 def create_division_graph(equations: List[List[str]], values: List[float]) -> Dict[str, Dict[str, float]]:
-    '''
-    graph = {
-        "node": {
-            neighbor: edge_value
-        }
-    }
-    '''
     division_graph = defaultdict(dict)
     for (dividend, divisor), value in zip(equations, values):
         print(dividend, divisor, value)
@@ -42,6 +35,7 @@ def evaluate_division(division_graph: dict, source: str, target: str) -> int:
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append((neighbor, product*edge_value))
+    return -1
 
 
 if __name__ == '__main__':
@@ -54,4 +48,9 @@ if __name__ == '__main__':
                  3.0
              ]
     queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
+    print(calculate_equation(equations, values, queries))
+
+    equations = [["a", "b"], ["c", "d"]]
+    values = [1.0, 1.0]
+    queries = [["a", "c"], ["b", "d"], ["b", "a"], ["d", "c"]]
     print(calculate_equation(equations, values, queries))
