@@ -4,8 +4,8 @@ from grid_traveler.test_resources.functionality_test_data import functionality_t
 
 def brute_force(n: int, m: int, source: list, target: list) -> int:
     """
-    Time Complexity: O(2^(max(n, m)))
-    Space Complexity: O(max(n, m))
+    Time Complexity: O(2^(n + m))
+    Space Complexity: O(n + m)
     """
     def grid_traversal(row: int, column: int) -> int:
         if row == 0 or column == 0:
