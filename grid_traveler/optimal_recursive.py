@@ -4,7 +4,7 @@ from grid_traveler.test_resources.time_complexity_test_data import time_complexi
 
 def optimal(n: int, m: int, source: list, target: list) -> int:
     """
-    Time Complexity: O(n + m)
+    Time Complexity: O(n*m)
     Space Complexity: O(n + m)
     """
     memo: dict = {}
@@ -25,7 +25,7 @@ def optimal(n: int, m: int, source: list, target: list) -> int:
             return memo[(row, column)]
 
     if not source_and_target_at_edges(n, m, source, target):
-        n, m = get_sub_grid_from_source_to_target(n, m, source, target)
+        n, m = get_sub_grid_from_source_to_target(n, m, source, target) 
         return grid_traversal(n, m)
     else:
         return grid_traversal(n, m)
