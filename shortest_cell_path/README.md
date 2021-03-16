@@ -8,4 +8,4 @@ Each location in the path, including the start and the end, must be a 1. Each su
 
 It is guaranteed that grid[sr][sc] = grid[tr][tc] = 1, and the starting and target positions are different.
 
-If the task is impossi~~~~ble, return -1.
+If the task is impossible, return -1.
