@@ -11,15 +11,19 @@ class Solution:
         """
         unique_emails = set()
         for email in emails:  # O(emails)
-            local_name, domain_name = self.split_email(email)
-            if "+" in local_name:
-                local_name = self.get_local_name_after_plus_sign_slice(local_name)  # O(email.length)
-            if "." in email:
-                local_name = self.get_local_name_minus_several_dots(local_name)  # O(email.length)
-            transformed_email = local_name + domain_name
+            transformed_email = self.get_transform_email(email)  # O(100) -> O(1)
             if transformed_email not in unique_emails:
                 unique_emails.add(transformed_email)
         return len(unique_emails)
+
+    def get_transform_email(self, email) -> str:
+        local_name, domain_name = self.split_email(email)
+        if "+" in local_name:
+            local_name = self.get_local_name_after_plus_sign_slice(local_name)  # O(email.length)
+        if "." in email:
+            local_name = self.get_local_name_minus_several_dots(local_name)  # O(email.length)
+        transformed_email = local_name + domain_name
+        return transformed_email
 
     def split_email(self, email) -> tuple:
         index_of_at_sign: int = self.get_index_of_at_sign(email)
@@ -28,28 +32,27 @@ class Solution:
         return local_name, domain_name
 
     @staticmethod
-    def get_local_name_after_plus_sign_slice(local_name):  # O(n)
-        i = 0
-        while local_name[i] != "+":
-            i += 1
-        sliced_name = local_name[:i]
-        return sliced_name  # Could be off by one here
-
-    @staticmethod
-    def get_index_of_at_sign(email):
+    def get_index_of_at_sign(email) -> int:
         j = len(email) - 1
         while email[j] != "@":
             j -= 1
         return j
 
-    def get_local_name_minus_several_dots(self, local_name):
-        local_name = self.get_local_name_minus_dot(local_name)
+    @staticmethod
+    def get_local_name_after_plus_sign_slice(local_name) -> str:  # O(n)
+        i = 0
+        while local_name[i] != "+":
+            i += 1
+        sliced_name = local_name[:i]
+        return sliced_name
+
+    def get_local_name_minus_several_dots(self, local_name) -> str:
         while "." in local_name:
             local_name = self.get_local_name_minus_dot(local_name)
         return local_name
 
     @staticmethod
-    def get_local_name_minus_dot(local_name):
+    def get_local_name_minus_dot(local_name) -> str:
         i = 0
         while i < len(local_name):
             if local_name[i] == ".":
