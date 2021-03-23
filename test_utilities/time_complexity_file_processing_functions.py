@@ -30,7 +30,7 @@ def process_test_file_where_lines_are_int_arrays(test_file_path: str, exclude_in
             if index > exclude_index:
                 line = convert_line_into_integer_list(line)
                 processed_data.append(line)
-    return processed_data
+    return processed_data[0]
 
 
 def process_test_file_where_lines_are_str_arrays(test_file_path: str, exclude_index: int = -1) -> list:
