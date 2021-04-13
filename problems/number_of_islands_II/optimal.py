@@ -3,6 +3,8 @@ from typing import List
 from collections import defaultdict
 
 
+# TODO: Why is this slower than my previous solution? (with sets)
+
 class Solution:
     def __init__(self):
         self.grid = []
