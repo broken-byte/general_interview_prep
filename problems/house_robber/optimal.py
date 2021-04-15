@@ -4,6 +4,10 @@ from typing import List
 class Solution:
 
     def rob(self, nums: List[int]) -> int:
+        """
+        Time Complexity: O(n^2)
+        Space Complexity: O(n)
+        """
 
         memo: dict = {}
 

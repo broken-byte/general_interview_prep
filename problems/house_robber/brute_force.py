@@ -3,6 +3,10 @@ from typing import List
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        """
+        Time Complexity: O(n^n)
+        Space Complexity: O(n)
+        """
 
         def rob_recursively(loot_inside_houses: List[int], current_house=-1) -> int:
             if no_safe_houses_to_rob(loot_inside_houses, current_house):
