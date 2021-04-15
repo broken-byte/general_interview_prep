@@ -25,6 +25,7 @@ if __name__ == '__main__':
     ab -> abcd -> abcda
     """
     print(can_construct("abcdef", ["ab", "abc", "cd", "def", "abcd"]))
+    print(can_construct('purple', ['purp', 'p', 'ur', 'le', 'purpl']))
     print(can_construct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))
     print(can_construct("", ["cat", "dog", "mouse"]))
     print(can_construct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]))
