@@ -65,13 +65,13 @@ def get_candidates(board: list, row: int, col: int):
     for char in ['1', '2', '3', '4', '5', '6', '7', '8', '9']:
         collision = False
         for i in range(0, 8):
-            if (board[row][i] == chr or
-                    board[i][col] == chr or
-                    board[(row - row % 3) + floor(i / 3)][(col - col % 3) + i % 3] == chr):
+            if (board[row][i] == char or
+                    board[i][col] == char or
+                    board[(row - row % 3) + floor(i / 3)][(col - col % 3) + i % 3] == char):
                 collision = True
                 break
 
         if not collision:
-            candidates.append(chr)
+            candidates.append(char)
 
     return candidates

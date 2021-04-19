@@ -10,7 +10,7 @@ def brute_force(n: int, m: int, source: list, target: list) -> int:
     def grid_traversal(row: int, column: int) -> int:
         if row == 0 or column == 0:
             return 0
-        elif row == 1 and column == 1:
+        elif row == 1 or column == 1:
             return 1
         else:
             right_path_traversals: int = grid_traversal(row, column - 1)
