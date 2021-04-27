@@ -1,61 +1,56 @@
 
 
 class Decoder:
-    # TODO: Refactor this so that the recursion parameter
-    #  is the substring being decoded, (which is hashable)
+    """
+    Time Complexity: O(N)
+    Space Complexity: O(N)
+    """
     def __init__(self):
-        self.alphabet_map: dict = {}
         self.encoded_message: str = ""
         self.memo: dict = {}
 
-    def get_number_of_possible_ways_to_decode(self, s: str) -> int:
+    def numDecodings(self, s: str) -> int:
         self.encoded_message = s
-        self.generate_alphabet_map()
-        return self.decode_recursively(index=0, decoding_step=0)
+        self.memo = {}
+        return self.decode_recursively(0)
 
-    def generate_alphabet_map(self):
-        self.alphabet_map = {}
-        alphabets = range(65, 91)
-        digits = range(1, 27)
-        for digit, letter in zip(digits, alphabets):
-            self.alphabet_map[digit] = chr(letter)
-
-    def decode_recursively(self, index: int, decoding_step: int) -> int:
-        if self.at_end_of_message(index, decoding_step):
-            return 1 if self.can_be_decoded(index, decoding_step) else 0
-        elif self.at_beginning_of_message(index, decoding_step) or self.can_be_decoded(index, decoding_step):
-            single_digit_decoding: int = self.decode_recursively(index + decoding_step, 1)
-            if self.double_digit_decoding_out_of_bounds(index, decoding_step):
-                return single_digit_decoding
-            else:
-                double_digit_decoding: int = self.decode_recursively(index + decoding_step, 2)
-                return single_digit_decoding + double_digit_decoding
-        else:
+    def decode_recursively(self, index) -> int:
+        if index in self.memo:
+            return self.memo[index]
+        elif self.at_end_of_message(index):
+            return 1
+        elif self.has_leading_zero(index):
             return 0
+        elif self.one_of_from_end_of_message(index):
+            return 1
+        else:
+            num_decodes = self.decode_recursively(index + 1)
+            if self.double_digit_can_be_decoded(index):
+                num_decodes += self.decode_recursively(index + 2)
+            self.memo[index] = num_decodes
+            return num_decodes
 
-    def at_end_of_message(self, index: int, decoding_step: int) -> bool:
-        return index + decoding_step == len(self.encoded_message)
+    def at_end_of_message(self, index: int) -> bool:
+        return index == len(self.encoded_message)
 
-    def at_beginning_of_message(self, index: int, decoding_step: int) -> bool:
-        return index == 0 and decoding_step == 0
+    def has_leading_zero(self, index: int) -> bool:
+        return self.encoded_message[index] == '0'
 
-    def double_digit_decoding_out_of_bounds(self, index: int, decoding_step: int) -> bool:
-        return index + decoding_step + 2 > len(self.encoded_message)
+    def one_of_from_end_of_message(self, index: int) -> bool:
+        return index == len(self.encoded_message) - 1
 
-    def can_be_decoded(self, index: int, decoding_step: int) -> int:
-        sub_string = self.encoded_message[index:index + decoding_step]
-        if sub_string[0] == "0":
-            return False
-        digit = int(sub_string)
-        can_be_decoded: bool = digit in self.alphabet_map
-        return can_be_decoded
+    def double_digit_can_be_decoded(self, index: int) -> bool:
+        sub_message: str = self.encoded_message[index: index + 2]
+        double_digit_decode = int(sub_message)
+        return double_digit_decode <= 26
 
 
 if __name__ == '__main__':
     decoder = Decoder()
-    print(decoder.get_number_of_possible_ways_to_decode("226"))
-    print(decoder.get_number_of_possible_ways_to_decode("2125"))
-    print(decoder.get_number_of_possible_ways_to_decode("01"))
-    print(decoder.get_number_of_possible_ways_to_decode("12"))
-    print(decoder.get_number_of_possible_ways_to_decode("0"))
-    print(decoder.get_number_of_possible_ways_to_decode("06"))
+    print(decoder.numDecodings("226"))
+    print(decoder.numDecodings("2125"))
+    print(decoder.numDecodings("01"))
+    print(decoder.numDecodings("12"))
+    print(decoder.numDecodings("0"))
+    print(decoder.numDecodings("06"))
+    print(decoder.numDecodings("1111111111111111111111"))
