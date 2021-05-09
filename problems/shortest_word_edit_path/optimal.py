@@ -2,7 +2,7 @@ from collections import defaultdict
 from collections import deque
 
 
-def shortestWordEditPath(source, target, words) -> int:
+def shortestWordEditPath(source: str, target: str, words: list) -> int:
     """
     n = len(words)
     m = len(word)
@@ -12,12 +12,12 @@ def shortestWordEditPath(source, target, words) -> int:
     if len(source) != len(target):
         return -1
     graph: dict = create_word_graph(source, words)
-    length_of_shortest_path_from_source_to_target = breadth_first_search(graph, source, target)
+    length_of_shortest_path_from_source_to_target: int = breadth_first_search(graph, source, target)
     return length_of_shortest_path_from_source_to_target
 
 
-def create_word_graph(source, words):  # O(n^2*m)
-    adjacency_list = defaultdict(list)
+def create_word_graph(source, words) -> dict:  # O(n^2*m)
+    adjacency_list: dict = defaultdict(list)
     words.append(source)
     for word in words:  # O(n)
         adjacency_list[word] = []
@@ -27,12 +27,12 @@ def create_word_graph(source, words):  # O(n^2*m)
     return adjacency_list
 
 
-def has_difference_of_only_one_letter(word, other_word):  # O(m)
+def has_difference_of_only_one_letter(word, other_word) -> bool:  # O(m)
     index = 0
     number_of_differences = 0
     while index < len(word):  # O(m)
-        character = word[index]
-        other_character = other_word[index]
+        character: str = word[index]
+        other_character: str = other_word[index]
         if character != other_character:
             number_of_differences += 1
         index += 1
