@@ -1,5 +1,10 @@
 from numpy import zeros
 
+"""
+This solution assumes that source and target are always at
+(0,0) and (n - 1, m - 1), respectively
+"""
+
 
 def grid_traveler_forward_facing(n: int, m: int) -> int:
     table = zeros((n + 1, m + 1), dtype=int)

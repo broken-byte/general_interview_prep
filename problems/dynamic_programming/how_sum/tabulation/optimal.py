@@ -4,7 +4,7 @@ def how_sum(target: int, nums: list[int]) -> list[int]:
     """
     M = target
     N = len(nums)
-    Time Complexity: O(M*N*M0 -> O(M^2*N)
+    Time Complexity: O(M*N*M) -> O(M^2*N)
     Space Complexity: O(M^2)
     """
     table: list = [None for _ in range(target + 1)]
