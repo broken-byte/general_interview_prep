@@ -8,7 +8,7 @@ def can_construct(target_word: str, word_bank: List[str]) -> bool:
         """
         N = len(word_bank)
         M = len(target)
-        Time Complexity: O(N*M^2)  # branchFactor^worstCaseDepth*findCost
+        Time Complexity: O(N*M^2)  # branchFactor*worstCaseDepth*findCost
         Space Complexity: O(M^2)  # recursionDepth*findCost
         """
         if target in memo:
