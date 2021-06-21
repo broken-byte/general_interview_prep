@@ -1,6 +1,10 @@
 
 
-def find_grants_cap(grants_array: list[int], new_budget: float):  # O(N*log(max(grantsArray))) -> O(log(max(grantsArray)))
+def find_grants_cap(grants_array: list[int], new_budget: float):
+    """
+    Time Complexity: O(log(max(grants_array))
+    Space Complexity: O(1)
+    """
     hi = max(grants_array)
     lo = 0
     while lo <= hi:
@@ -14,7 +18,11 @@ def find_grants_cap(grants_array: list[int], new_budget: float):  # O(N*log(max(
             hi = middle_cap
 
 
-def get_budget_calculation(grants_array, cap) -> float:  # O(1)
+def get_budget_calculation(grants_array, cap) -> float:
+    """
+    Time Complexity: O(n), but grants_array is capped at length 20,
+    therefore the TC reduces to O(1)
+    """
     possible_grant_reduction = grants_array.copy()
     for index in range(len(grants_array)):
         if possible_grant_reduction[index] > cap:
