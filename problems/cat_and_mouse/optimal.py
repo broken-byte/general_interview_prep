@@ -13,11 +13,14 @@ class Solution:
         """
         Time Complexity: O(n^3)
         --------------------
-        Without Memoization: O(N*N^(2^N)), due to recursive call tree is N^2N, for all N nodes
-        With Memoization: Recursive call stack is: O(N^2), for all N Nodes, hence:
-        - O(N^2*N) -> O(n^3)
+        Without Memoization:
+            O(N*N^(2^N)), due to recursive call tree is N^2N, for all N nodes
+        With Memoization:
+            Recursive call stack is: O(N^2), for all N Nodes, hence:
+                - O(N^2*N) -> O(n^3)
 
-        Space Complexity: O(n^2), for cache of recursive call stack
+        Space Complexity:
+            O(n^2), for cache of recursive call stack
         """
 
         @lru_cache(None)
