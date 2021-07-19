@@ -1,5 +1,5 @@
 from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
-from problems.dynamic_programming.grid_traveler.test_resources.functionality_test_data import functionality_test_data
+from problems.algorithm_problems.dynamic_programming.grid_traveler.test_resources.functionality_test_data import functionality_test_data
 
 
 def brute_force(n: int, m: int, source: list, target: list) -> int:

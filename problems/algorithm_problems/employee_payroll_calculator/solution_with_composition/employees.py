@@ -1,6 +1,6 @@
-from problems.employee_payroll_calculator.solution_with_composition.hr import get_policy
-from problems.employee_payroll_calculator.solution_with_composition.productivity import get_role
-from problems.employee_payroll_calculator.solution_with_composition.contacts import get_employee_address
+from problems.algorithm_problems.employee_payroll_calculator.solution_with_composition.hr import get_policy
+from problems.algorithm_problems.employee_payroll_calculator.solution_with_composition.productivity import get_role
+from problems.algorithm_problems.employee_payroll_calculator.solution_with_composition.contacts import get_employee_address
 
 
 class _EmployeeDatabase:

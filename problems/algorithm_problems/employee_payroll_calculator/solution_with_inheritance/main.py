@@ -1,7 +1,4 @@
-from problems.employee_payroll_calculator.solution_with_inheritance import hr
-from problems.employee_payroll_calculator.solution_with_inheritance import employees
-from problems.employee_payroll_calculator.solution_with_inheritance import productivity
-
+from problems.algorithm_problems.employee_payroll_calculator.solution_with_inheritance import employees, hr, productivity
 
 if __name__ == '__main__':
     manager = employees.Manager(1, 'Mary Poppins', 3000)

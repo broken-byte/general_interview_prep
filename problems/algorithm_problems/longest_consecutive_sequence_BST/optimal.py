@@ -1,4 +1,4 @@
-from problems.longest_consecutive_sequence_BST.tree_builder import construct_tree_from_nodes, print_level_order
+from problems.algorithm_problems.longest_consecutive_sequence_BST.tree_builder import construct_tree_from_nodes, print_level_order
 
 
 class Solution:

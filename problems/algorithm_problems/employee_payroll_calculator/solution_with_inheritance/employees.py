@@ -1,9 +1,9 @@
-from problems.employee_payroll_calculator.solution_with_inheritance.hr import (
+from problems.algorithm_problems.employee_payroll_calculator.solution_with_inheritance.hr import (
     SalaryPolicy,
     CommissionPolicy,
     HourlyPolicy
 )
-from problems.employee_payroll_calculator.solution_with_inheritance.productivity import (
+from problems.algorithm_problems.employee_payroll_calculator.solution_with_inheritance.productivity import (
     ManagerRole,
     SecretaryRole,
     SalesRole,

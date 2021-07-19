@@ -1,7 +1,7 @@
 from typing import List
 
 from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
-from problems.shortest_cell_path.test_resources.functionality_test_data import functionality_test_data
+from problems.algorithm_problems.shortest_cell_path.test_resources.functionality_test_data import functionality_test_data
 
 
 def optimal(grid: List[List[int]], sr: int, sc: int, tr: int, tc: int):
