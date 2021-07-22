@@ -69,7 +69,7 @@ class NestedIterator:
             self.stack.extend(reversed(nested_list.getList()))
 
     def empty(self) -> bool:
-        return len(self.stack) is 0
+        return len(self.stack) == 0
 
     def _top_element_is_integer(self) -> bool:
         return self.stack[-1].isInteger()
