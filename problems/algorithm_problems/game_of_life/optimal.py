@@ -1,6 +1,43 @@
 from enum import Enum
 
 
+class Solution:
+    def gameOfLife(self, board: list[list[int]]) -> None:
+        """
+        M = Len(board)
+        N = Len(board[0])
+        Time Complexity: O(M*N)
+        Space Complexity: O(M*N) for cell bag
+
+        To optimize to O(1) space, I would move
+        the logic of the Cell class into the solution
+        class, and encode the Cell State in place as
+        follows:
+
+        class CellState(Enum):
+            ALIVE_TO_ALIVE = 3
+            DEAD_TO_ALIVE = 2
+            ALIVE_TO_DEAD = 1
+            DEAD_TO_DEAD = 0
+
+        So that I can store all possible states
+        in the board itself without losing information
+        """
+        m, n = len(board), len(board[0])
+        cell_bag: {tuple: Cell} = {}
+        for row in range(m):
+            for col in range(n):
+                cell_state = board[row][col]
+                cell = Cell(CellState(cell_state), row, col)
+                cell_bag[(row, col)] = cell
+                cell.discover_surrounding_neighbor_states(board)
+                cell.prepare_for_next_state()
+        for row in range(m):
+            for col in range(n):
+                next_state: CellState = cell_bag[(row, col)].next_state
+                board[row][col] = next_state.value
+
+
 class CellState(Enum):
     DEAD, ALIVE = 0, 1
 
@@ -59,42 +96,3 @@ class Cell:
 
     def _coordinate_in_bounds(self, row: int, col: int, m: int, n: int) -> bool:
         return 0 <= row < m and 0 <= col < n
-
-
-class Solution:
-    def gameOfLife(self, board: list[list[int]]) -> None:
-        """
-        M = Len(board)
-        N = Len(board[0])
-        Time Complexity: O(M*N)
-        Space Complexity: O(M*N) for cell bag
-
-        To optimize to O(1) space, I would move
-        the logic of the Cell class into the solution
-        class, and encode the Cell State in place as
-        follows:
-
-        class CellState(Enum):
-            ALIVE_TO_ALIVE = 3
-            DEAD_TO_ALIVE = 2
-            ALIVE_TO_DEAD = 1
-            DEAD_TO_DEAD = 0
-
-        So that I can store all possible states
-        in the board itself without losing information
-        """
-        m, n = len(board), len(board[0])
-        cell_bag: {tuple: Cell} = {}
-        for row in range(m):
-            for col in range(n):
-                if (row, col) == (0, 2):
-                    print("WTF")
-                cell_state = board[row][col]
-                cell = Cell(CellState(cell_state), row, col)
-                cell_bag[(row, col)] = cell
-                cell.discover_surrounding_neighbor_states(board)
-                cell.prepare_for_next_state()
-        for row in range(m):
-            for col in range(n):
-                next_state: CellState = cell_bag[(row, col)].next_state
-                board[row][col] = next_state.value
