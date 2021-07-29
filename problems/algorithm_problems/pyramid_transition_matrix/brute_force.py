@@ -16,9 +16,8 @@ class Solution:
             if len(current_row) == 1:
                 return True
             # Recursive Cases
-            if len(current_row) - len(next_row) == 1:
-                can_build: bool = can_build_pyramid(next_row, [], 0)
-                if can_build:
+            elif len(current_row) - len(next_row) == 1:
+                if can_build_pyramid(next_row, [], 0):
                     return True
             else:
                 left, right = current_row[index], current_row[index + 1]
@@ -27,8 +26,7 @@ class Solution:
                 possible_triples = allowed_to_char_hash[left]
                 for triple in possible_triples:
                     if right == triple[1]:
-                        can_build = can_build_pyramid(current_row, next_row + [triple[2]], index + 1)
-                        if can_build:
+                        if can_build_pyramid(current_row, next_row + [triple[2]], index + 1):
                             return True
                 return False
 
