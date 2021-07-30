@@ -10,7 +10,7 @@ class Solution:
         stack = []
         previous_operand = 0
         result = 0
-        sign = Sign.POSITIVE  # 1 means positive, -1 means negative
+        sign = Sign.POSITIVE
         for current_character in s:
             if current_character.isdigit():
                 previous_operand = (previous_operand * 10) + int(current_character)
