@@ -41,7 +41,7 @@ simply follow the instructions below:
     
     I use PyCharm Community Edition (I highly suggest you do the
     same for Python development) so to specify the source I go to Preferences -> Project -> 
-    Project Structure and right click the top level of this git repo and check "Sources". The
+    Project Structure and right-click the top level of this git repo and check "Sources". The
     top level directory should now be blue, or some such color depending on your IDE theme. 
     
 6. Specify your SDK. This synchronizes your IDE with the virtual environment we created in step 3.
