@@ -15,7 +15,7 @@ def build_tree(leet_code_input: str, should_print_tree_code_to_console=False):
     and returns the root of the constructed tree regardless
     """
     leet_code_input = leet_code_input[1:-1].split(',')
-    if len(leet_code_input) == 0:
+    if len(leet_code_input) == 1 and len( leet_code_input[0]) == 0:
         return
     nodes = [('root', leet_code_input[0])]
     for index, current_node in enumerate(leet_code_input[1:]):
