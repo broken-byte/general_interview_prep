@@ -11,6 +11,10 @@ class TreeNode:
 
 
 class Solution:
+    """
+    Time Complexity: O(N) -> ~2(N)
+    Space Complexity: O(N)
+    """
     def increasingBST(self, root):
 
         def in_order_generator(node: Optional[TreeNode]):

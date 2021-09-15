@@ -11,16 +11,15 @@ class TreeNode:
 
 
 class Solution:
-
+    """
+    n = number of nodes in tree
+    Time Complexity: O(n)
+    Space Complexity: O(height of tree)
+    """
     def __init__(self):
         self.current_node = None
 
     def increasingBST(self, root):
-        """
-        n = number of nodes in tree
-        Time Complexity: O(n)
-        Space Complexity: O(height of tree)
-        """
 
         def inorder(node: Optional[TreeNode]):
             if node is not None:
