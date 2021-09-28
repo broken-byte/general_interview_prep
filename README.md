@@ -1,7 +1,7 @@
 # General Interview Prep
 A collection of solutions to problems I've attempted in the context of 
 either 1 on 1, 45/35/30 minute mock programming interviews
-using [Pramp](https://www.pramp.com/dashboard#/) and [LeetCode](https://leetcode.com/),
+using [Pramp](https://www.pramp.com/dashboard#/), [LeetCode](https://leetcode.com/), [HackerRank](https://www.hackerrank.com/),
 or just questions I've attempted solo that I feel are beneficial to me. 
 
 
@@ -58,11 +58,10 @@ How to Use
  respective directories of each challenge, inside the test_resources folder. I've separated
  the functionality tests from the time complexity tests in their respectively named files.
  
- #### Example (if you want to add a new problem from Hacker Rank)
- I have a challenge called Fraudulent Activity, and it has some functional tests, and some time
- complexity tests on Hacker Rank. So, I get the functional tests from the problem page, and the 
- time complexity tests from the test file download link on that same page that appears once you run
- the tests in their web IDE. I make a functionality_test_data dictionary as such:
+ #### Example (if you want to add a new problem)
+ I have a problem called Fraudulent Activity, and it has some functional tests, and some time
+ complexity tests. So, I get the functional tests from the problem page (Pramp, LeetCode, HackerRank, etc.), and the 
+ time complexity tests (i.e., the long ones, typically in a text file). I make a functionality_test_data dictionary as such:
  ```
 functionality_test_data: dict = {
     "test_0": {
