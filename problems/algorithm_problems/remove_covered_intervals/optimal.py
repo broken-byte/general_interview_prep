@@ -3,11 +3,17 @@
 class Solution:
     def removeCoveredIntervals(self, intervals: list[list[int]]) -> int:
         """
-        Sort intervals by start values, do a linear search and count non covered intervals
         Time Complexity: O(nlog(n)) # sorting cost
         Space Complexity: O(1)
+
+        Algorithm: Sorted Linear Search W/ Caching
+        --------------------------------------------
+        Sort intervals by start values, unless
+        starts are equal, in which case sort by end values.
+        Do a linear search and count non covered intervals,
+        all the while, caching previous end values if they
+        aren't covered.
         """
-        # sort by start, unless starts are equal, in which case sort by end
         intervals.sort(key=lambda x: (x[0], -x[1]))
         prev_end = 0
         count_of_non_covered_intervals = 0
