@@ -4,6 +4,13 @@ class Solution:
     """
     Time Complexity: O(n)
     Space Complexity: O(1)
+
+    Algorithm: Greedy
+    -----------------
+    Maximize diagonal moves between points
+    since you move twice on diagonal moves,
+    do this for every adjacent pair to get the
+    minimum move time!
     """
     class Point:
         def __init__(self, point_raw: list[int]):
